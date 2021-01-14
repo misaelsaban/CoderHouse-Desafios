@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clase con ES - Desafio 1 - Misael Sabán</title>
+</head>
+ <body>
+
+    <h1>
+        Codea like a champion 🏍️💨
+    </h1>
+
+    <script>
+    class Usuario{
+        constructor(nombre, apellido, libros, mascotas){
+                this.nombre = nombre;
+                this.apellido = apellido;
+                this.libros = libros;
+                this.mascotas = mascotas;
+            }
+        
+            getFullName() {
+            return `Usuario: ${this.nombre} ${this.apellido}.`;
+        }
+
+        addmascota(newMascota){
+            this.mascotas.push(newMascota);
+        }
+
+        getMascotas(){
+            return this.mascotas.length;
+        }
+
+        addBook(book, autor){
+            this.libros.push( {
+                "nombre": book,
+                "autor": autor
+            });
+        }
+
+        getBooks(){
+            let nombresLibros = []
+            this.libros.forEach(item => nombresLibros.push(item.nombre));
+            return nombresLibros;
+        }
+
+    }
+
+    let mascotas = ["Gato","Perro","Pez"];
+    let libros = [
+        {
+          "nombre": "Anna Karenina",
+          "autor": "León Tolstoi"
+        },
+        {
+          "nombre": "Hombres como dioses",
+          "autor": "Hernan Lanvers"
+        },
+        {
+          "nombre": "Marley Y Yo",
+          "autor": "John Grogan"
+        }];
+        
+        let usuario = new Usuario("Misael","Sabán", libros, mascotas);
+        console.log(usuario.getFullName());
+        usuario.addmascota("Iguana");
+        usuario.addmascota("Boa");
+        console.log(`Cantidad de Mascotas: ${ usuario.getMascotas() }.`);
+        usuario.addBook("Javascript for dummies","Lalo Landa");
+        console.log(usuario.getBooks());
+        
+    </script>
+ </body>
+</html>
