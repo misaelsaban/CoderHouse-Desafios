@@ -41,7 +41,14 @@ class Archivo{
     }
 
     borrar() {
-        const del = fs.truncate(path.resolve(__dirname, this.nombreArchivo), 0, function(){console.log('done')})
+        //const del = fs.truncate(path.resolve(__dirname, this.nombreArchivo), 0, function(){console.log('done')})
+        fs.unlink(path.resolve(__dirname, this.nombreArchivo), (err) => {
+            if (err) {
+              console.error(err)
+              return
+            }
+            //file removed
+          })
     }
 }
 
