@@ -52,5 +52,5 @@ let archivo;
   archivo = await prueba.leer();
   console.log(archivo)
   prueba.guardar(archivo, "Mas notebooks",5845.54,"https://http2.mlstatic.com/D_NQ_NP_641105-MLA43915971144_102020-F.webp" );
-  prueba.borrar();
+  //prueba.borrar();
 })()
