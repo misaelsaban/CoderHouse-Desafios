@@ -12,6 +12,7 @@ interface IProducto{
   //Metodos
   addProduct(producto: IProd): void;
   showProducts(): void;
+  
 }
 
 export class Producto implements  IProducto{
@@ -26,4 +27,5 @@ export class Producto implements  IProducto{
   showProducts() {
       return this.productos;
   }
+
 }

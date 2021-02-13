@@ -20,7 +20,7 @@ router.get('/productos/:id', (req: Request, res: Response) => {
     if (opsProd.productos.length == 0)
         res.status(404).json({error : 'No hay productos cargados'})
 
-    if (product === null)
+    if (product)
         res.status(404).json({error : 'Producto no encontrado'})
 
     res.status(200).send(product)
@@ -29,6 +29,9 @@ router.get('/productos/:id', (req: Request, res: Response) => {
 router.post('/productos', (req: Request, res: Response) => {  
     try{    
         const { title, price, thumbnail } = req.body
+
+
+
         const newProduct = { title, price, thumbnail }
 
         opsProd.addProduct(newProduct)
