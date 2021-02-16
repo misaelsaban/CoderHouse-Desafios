@@ -20,7 +20,7 @@ router.get('/productos/:id', (req: Request, res: Response) => {
     if (opsProd.productos.length == 0)
         res.status(404).json({error : 'No hay productos cargados'})
 
-    if (product)
+    if (product === null || product === undefined)
         res.status(404).json({error : 'Producto no encontrado'})
 
     res.status(200).send(product)
@@ -29,13 +29,11 @@ router.get('/productos/:id', (req: Request, res: Response) => {
 router.post('/productos', (req: Request, res: Response) => {  
     try{    
         const { title, price, thumbnail } = req.body
-
-
-
         const newProduct = { title, price, thumbnail }
 
-        opsProd.addProduct(newProduct)
-        res.status(201).send("Producto agregado!")  
+        const prodAdded = opsProd.addProduct(newProduct)
+        //res.status(201).send("Producto agregado!")  
+        res.status(201).json(prodAdded)  
 
     }catch(error){
         res.status(404).json({error : 'No se pudo agregar el Producto.'})

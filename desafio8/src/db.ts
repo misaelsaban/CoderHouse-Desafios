@@ -22,6 +22,7 @@ export class Producto implements  IProducto{
   addProduct(producto: IProd) {
       producto.id = this.productos.length + 1
       this.productos.push(producto) 
+      return producto
   }
 
   showProducts() {
