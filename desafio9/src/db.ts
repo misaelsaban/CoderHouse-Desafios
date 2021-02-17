@@ -1,58 +1,59 @@
-import { json } from "express";
-
 export interface IProd{  
-    //Propiedades
-    id?: number  
-    title:string
-    price:number
-    thumbnail:string
+  //Propiedades
+  id?: number  
+  title:string
+  price:number
+  thumbnail:string
 }
 
+
 interface IProducto{  
-    //Propiedades
-    productos:IProd[]
-    //Metodos
-    addProduct(producto: IProd): void;
-    showProducts(): void;
-    updateProducts(idProd: number, title:string, price:number, thumbnail:string): void;
-    deleteProduct(idProd: number):void
+  //Propiedades
+  productos:IProd[]
+  //Metodos
+  addProduct(producto: IProd): void;
+  showProducts(): void;
+  
 }
 
 export class Producto implements  IProducto{
-    productos:IProd[] = []
+  productos:IProd[] = []
 
 
-    addProduct(producto: IProd) {
-        try{
-            producto.id = this.productos.length + 1
-            this.productos.push(producto) 
-        }catch(error){
-            throw error
-        }
-    }
+  addProduct(producto: IProd) {
+      producto.id = this.productos.length + 1
+      this.productos.push(producto) 
+      return producto
+  }
 
-    showProducts() {
-        return this.productos;
-    }
+  showProducts() {
+      return this.productos;
+  }
 
-    updateProducts(idProd: number, title:string, price:number, thumbnail:string): void{
-        try{
-            const productSelecc =  this.productos.find(x => x.id === idProd)        
+    updateProducts(idProd: number, title:string, price:number, thumbnail:string){
+      try{
 
-            productSelecc!.title = title
-            productSelecc!.price = price // -- !validar null o undefined 
-            productSelecc!.thumbnail = thumbnail	
-        }catch(error){
-            throw error
-        }
-    }
+          let productSelecc =  this.productos.find(x => x.id === idProd)        
 
-    deleteProduct(idProd: number){
-        try{
-            this.productos = this.productos.splice(idProd, 1);
-            //o psProd.productos = psProd.productos.filter(x => x.id !== id);
-        }catch(error){
-            throw error
-        }
-    }
+          productSelecc!.title = title
+          productSelecc!.price = price 
+          productSelecc!.thumbnail = thumbnail
+          return productSelecc
+
+      }catch(error){
+          throw error
+      }
+  }
+
+  deleteProduct(idProd: number){
+      try{
+          const prod =  this.productos.find(x => x.id === idProd) 
+          this.productos.splice(idProd - 1 , 1);
+          return prod
+          
+      }catch(error){
+          throw error
+      }
+  }
+
 }
