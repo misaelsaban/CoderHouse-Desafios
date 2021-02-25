@@ -14,7 +14,7 @@ app.use('/api', RouteProductos);
 app.use('/api', express.static(__dirname + '/public'));
 
 app.set("views",path.resolve("./src/views/"))
-app.set("view engine","ejs")
+app.set("view engine","pug")
 
 
 app.listen(puerto, ()=> {

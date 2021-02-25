@@ -19,7 +19,7 @@ router.get('/productos/vista', (req: Request, res: Response) => {
     try{         
         const products =  opsProd.showProducts()
         let exist = products.length != 0 ? true : false
-        res.render('vistaProductos.ejs', {listaProductos: products, existProductos : exist});
+        res.render('vistaProductos.pug', {listaProductos: products, existProductos : exist});
     }catch(error){
         res.status(404).json({error : 'Error mostrando listado de Productos.'})
         console.log(error)
