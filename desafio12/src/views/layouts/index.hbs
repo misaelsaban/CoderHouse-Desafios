@@ -15,14 +15,6 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Sockets - API Productos</a>
-        <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="/">Administración Productos</a>
-        </li>        
-        </ul>
-    </nav>
     <div class="container">
         <div class="row">
             <div class="col-md-3"></div>
@@ -32,12 +24,14 @@
             <div class="col-md-3"></div>
         </div>
     </div> 
-    <script src="/api/socket.io/socket.io.js"></script> 
+    <script src="/socket.io/socket.io.js"></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
     <!--<script src="../../scritps/funcs.js></script> -->
 
     <script>
+
         const socket = io();
+
         $('#bttSaveProds').on('click', function(event) {
             event.preventDefault();
             socket.emit('dataProds', {
@@ -46,6 +40,7 @@
                 thumbnail: $('#thumbnail').val()
             });
         });
+
         socket.on('ProductoAgregado', data => {
             console.log("retorno ProductoAgregado");
             if($("#tblProds").find(' tbody tr:first')[0].innerText == "No hay productos"){
