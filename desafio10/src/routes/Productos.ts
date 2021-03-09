@@ -4,9 +4,6 @@ import path from 'path'
 var router = express.Router()
 let opsProd = new Producto()
 
-
-
-
 router.get('/productos', (req: Request, res: Response) => {  
     const products =  opsProd.showProducts()
     if (products.length == 0){
@@ -16,8 +13,7 @@ router.get('/productos', (req: Request, res: Response) => {
 })
 
 router.get('/productos/vista', (req: Request, res: Response) => {  
-    try{         
-        //Serves the body of the page aka "main.handlebars" to the container //aka "index.handlebars"
+    try{    
         const products =  opsProd.showProducts()
         let exist = products.length != 0 ? true : false
         res.render('partials/vistaProductos', {layout : 'index', listaProductos: products, existProductos : exist});
@@ -40,15 +36,6 @@ router.get('/productos/:id', (req: Request, res: Response) => {
 
     res.status(200).send(product)
 })
-
-
-
-
-
-
-
-
-
 
 router.post('/productos', (req: Request, res: Response) => {  
     try{    
