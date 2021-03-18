@@ -1,0 +1,81 @@
+<h1>Vista de Productos</h1>
+
+  
+<div class="row">
+    <h3 class="text-center">Administración de Productos</h3>
+</div> 
+<div class="row">
+    <form action="" id="formProds" enctype="application/json">
+        <div class="form-group">
+            <label for="Title">Producto</label>
+            <input type="text" autocomplete="false" class="form-control" id="title" name="title" placeholder="Nombre Producto">
+        </div>
+        <div class="form-group">
+            <label for="Price">Precio</label>
+            <input type="number" autocomplete="false" class="form-control" id="price" name="price" placeholder="0000">
+        </div>
+        <div class="form-group">
+            <label for="Thumbnail">Foto</label>
+            <input type="text" autocomplete="false" class="form-control" id="thumbnail" name="thumbnail" placeholder="Url Foto">
+        </div>
+        <div class="text-center" style="margin-top: 2%;">
+            <button id="bttSaveProds" class="btn btn-primary">Guardar</button>
+        </div>
+        
+    </form>
+</div>
+
+{{#if existProductos}}
+
+
+<table class="table" id="tblProds">
+  <thead class="table-light">
+    <tr>
+        <td>#</td>
+        <td>Nombre</td>
+        <td>Precio</td>
+        <td>Foto</td>
+    </tr>
+  </thead>
+  <tbody>
+    
+    {{#each listaProductos}}
+    <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.title}}</td>
+        <td>{{this.price}}</td>
+        <td><img src="{{this.thumbnail}}" alt=""></td>
+    </tr>
+    {{/each}}
+    
+  </tbody>
+</table>
+{{else}}
+<div class="alert alert-warning" role="alert">
+  <h2>No se encontraron productos</h2>
+</div>
+
+{{/if}}
+
+
+<div class="row">
+    <h3 class="text-center">Centro de Mensajes</h3>
+    <div class="form-group mrgBtt">
+        <input type="text" autocomplete="false" class="form-control" id="correo" name="correo" placeholder="correo@dominio.com">
+    </div>
+    <hr/>
+</div> 
+<div class="row">
+    <div id="chatBox" name="chatBox" class="mrgBtt">
+        <ul id="ListChatMsg">
+            {{#each ListaMensajesChat}}
+                <li><span class="correoChat">{{this.mail}}</span><span class="timeChat">[{{this.time}}]: </span><span class="msjChat">{{this.message}}</span></li>
+            {{/each}}
+        </ul>
+            
+    </div>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" id="msg" name="msg" placeholder="Ingresa un Mensaje">
+        <button class="btn btn-outline-primary" type="button" id="bttSendMsg">Enviar</button>
+    </div>
+</div>
