@@ -1,0 +1,67 @@
+use ecommerce;
+
+db.createCollection("productos");
+db.productos.insert([
+{timestamp: new Date(),nombre:"Pen Drive 1 GB",descripcion: "1 gb de almacenamiento",codigo: "p-101",foto:"https://cdn0.iconfinder.com/data/icons/30-hardware-line-icons/64/Pen-drive-512.png",precio:120},
+{timestamp: new Date(),nombre:"Pen Drive 2 GB",descripcion: "2 gb de almacenamiento",codigo: "p-102",foto:"https://cdn0.iconfinder.com/data/icons/30-hardware-line-icons/64/Pen-drive-512.png",precio:400},
+{timestamp: new Date(),nombre:"Pen Drive 4 GB",descripcion: "4 gb de almacenamiento",codigo: "p-103",foto:"https://cdn0.iconfinder.com/data/icons/30-hardware-line-icons/64/Pen-drive-512.png",precio:800},
+{timestamp: new Date(),nombre:"Pen Drive 8 GB",descripcion: "8 gb de almacenamiento",codigo: "p-104",foto:"https://cdn0.iconfinder.com/data/icons/30-hardware-line-icons/64/Pen-drive-512.png",precio:1200},
+{timestamp: new Date(),nombre:"Pen Drive 16 GB",descripcion: "16 gb de almacenamiento",codigo: "p-105",foto:"https://cdn0.iconfinder.com/data/icons/30-hardware-line-icons/64/Pen-drive-512.png",precio:2000},
+{timestamp: new Date(),nombre:"SD 32 GB",descripcion: "32 gb de almacenamiento",codigo: "s-101",foto:"https://cdn1.iconfinder.com/data/icons/photography-129/66/28-512.png",precio:2500},
+{timestamp: new Date(),nombre:"SD 64 GB",descripcion: "64 gb de almacenamiento",codigo: "s-102",foto:"https://cdn1.iconfinder.com/data/icons/photography-129/66/28-512.png",precio:3000},
+{timestamp: new Date(),nombre:"SD 128 GB",descripcion: "128 gb de almacenamiento",codigo: "s-103",foto:"https://cdn1.iconfinder.com/data/icons/photography-129/66/28-512.png",precio:4000},
+{timestamp: new Date(),nombre:"SD 256 GB",descripcion: "256 gb de almacenamiento",codigo: "s-104",foto:"https://cdn1.iconfinder.com/data/icons/photography-129/66/28-512.png",precio:4500},
+{timestamp: new Date(),nombre:"SD 512 GB",descripcion: "512 gb de almacenamiento",codigo: "s-105",foto:"https://cdn1.iconfinder.com/data/icons/photography-129/66/28-512.png",precio:4999}
+]);
+
+db.createCollection("mensajes");
+db.mensajes.insert([
+{mail: "mail@mail.com",time:new Date(),message:"Hola"},
+{mail: "mail2@mail.com","time": new Date(),"message": "Hola, que tal?"},
+{mail: "mail3@mail.com","time": new Date(),"message": "Hola a todos..."},
+{mail: "mail@mail.com","time": new Date(),"message": "prueba con MongoDB"},
+{mail: "mail2@mail.com","time": new Date(),"message": "y que tal?"},
+{mail: "mail3@mail.com","time": new Date(),"message": "aprendiendo a usarlo"},
+{mail: "mail@mail.com","time": new Date(),"message": "vamos poco a poco"},
+{mail: "mail2@mail.com","time": new Date(),"message": "yo antes usaba sqlserver"},
+{mail: "mail3@mail.com","time": new Date(),"message": "Yo tambien..."},
+{mail: "mail@mail.com",time:new Date(),message:"Vamos avanzando, saludos."}
+]);
+
+Select de Colecciones
+db.getCollectionNames();
+
+Select de todos los elementos de las colecciones
+db.productos.find().pretty();
+db.mensajes.find().pretty();
+
+Cantidad de elementos por coleccion
+db.productos.count();
+db.mensajes.count();
+
+Insertamos un nuevo producto
+db.productos.insert({timestamp: new Date(),nombre:"Laptop",descripcion: "Super laptop",codigo: "l-101",foto:"https://cdn3.iconfinder.com/data/icons/shoppy-outline-vol-1/512/1_laptop_computer_macbook-512.png",precio:4500});
+
+Select de todos los productos con precio menor a 1000
+db.productos.find({precio: {$lt: 1000}}).pretty();
+
+Select de todos los productos con precio entre 1000 y 3000
+db.productos.find({$and: [{"precio":{$gte:1000}},{"precio":{$lte:3000}}]}).pretty();
+
+Select de todos los productos con precio mayor 3000
+db.productos.find({"precio":{$gt:3000}}).pretty();
+
+Select de un producto, el tercer mas barato
+db.productos.find({},{"nombre":1,"_id":0}).sort({precio:1}).skip(2).limit(1).pretty();
+
+Update de todos los stocks de productos en 100
+db.productos.update({}, {$set: {stock: 100}},false,true);
+
+Update de todos los stocks de productos en 0 a productos con precio mayor a 4000
+db.productos.update({"precio":{$gt:4000}}, {$set: {stock: 0}},false,true);
+
+Delete de productos con precio menor a 1000
+db.productos.remove({"precio":{$lt:1000}});
+
+Creamos user 'pepe' solo permiso de lectura sobre la base ecommerce
+db.createUser( { user: "pepe", pwd: "asd456", roles: [{role: "read", db: "ecommerce"}]})

@@ -1,0 +1,60 @@
+[{
+        "_id" : ObjectId("605974e358f82a25161e0038"),
+        "mail" : "mail@mail.com",
+        "time" : ISODate("2021-03-23T04:56:03.626Z"),
+        "message" : "Hola"
+}
+{
+        "_id" : ObjectId("605974e358f82a25161e0039"),
+        "mail" : "mail2@mail.com",
+        "time" : ISODate("2021-03-23T04:56:03.626Z"),
+        "message" : "Hola, que tal?"
+}
+{
+        "_id" : ObjectId("605974e358f82a25161e003a"),
+        "mail" : "mail3@mail.com",
+        "time" : ISODate("2021-03-23T04:56:03.626Z"),
+        "message" : "Hola a todos..."
+}
+{
+        "_id" : ObjectId("605974e358f82a25161e003b"),
+        "mail" : "mail@mail.com",
+        "time" : ISODate("2021-03-23T04:56:03.626Z"),
+        "message" : "prueba con MongoDB"
+}
+{
+        "_id" : ObjectId("605974e358f82a25161e003c"),
+        "mail" : "mail2@mail.com",
+        "time" : ISODate("2021-03-23T04:56:03.626Z"),
+        "message" : "y que tal?"
+}
+{
+        "_id" : ObjectId("605974e358f82a25161e003d"),
+        "mail" : "mail3@mail.com",
+        "time" : ISODate("2021-03-23T04:56:03.626Z"),
+        "message" : "aprendiendo a usarlo"
+}
+{
+        "_id" : ObjectId("605974e358f82a25161e003e"),
+        "mail" : "mail@mail.com",
+        "time" : ISODate("2021-03-23T04:56:03.626Z"),
+        "message" : "vamos poco a poco"
+}
+{
+        "_id" : ObjectId("605974e358f82a25161e003f"),
+        "mail" : "mail2@mail.com",
+        "time" : ISODate("2021-03-23T04:56:03.626Z"),
+        "message" : "yo antes usaba sqlserver"
+}
+{
+        "_id" : ObjectId("605974e358f82a25161e0040"),
+        "mail" : "mail3@mail.com",
+        "time" : ISODate("2021-03-23T04:56:03.626Z"),
+        "message" : "Yo tambien..."
+}
+{
+        "_id" : ObjectId("605974e358f82a25161e0041"),
+        "mail" : "mail@mail.com",
+        "time" : ISODate("2021-03-23T04:56:03.626Z"),
+        "message" : "Vamos avanzando, saludos."
+}]
