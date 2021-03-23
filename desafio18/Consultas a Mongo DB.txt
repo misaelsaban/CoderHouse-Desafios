@@ -1,0 +1,110 @@
+Microsoft Windows [Versión 10.0.19041.867]
+(c) 2020 Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\Misa>mongo
+MongoDB shell version v4.4.4
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("a23d4f1c-03f6-4249-93eb-17bfd3a17d1b") }
+MongoDB server version: 4.4.4
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+        https://docs.mongodb.com/
+Questions? Try the MongoDB Developer Community Forums
+        https://community.mongodb.com
+---
+The server generated these startup warnings when booting:
+        2021-03-22T21:07:12.016-03:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> use prueba
+switched to db prueba
+> db.items.save({nombre:'Fideos', categoria: 'Harina', stock: 20});
+WriteResult({ "nInserted" : 1 })
+> db.items.save({nombre:'Leche', categoria: 'Lácteos', stock: 30});
+WriteResult({ "nInserted" : 1 })
+> db.items.find().pretty();
+{
+        "_id" : ObjectId("60593314ef21b807b5b5f50b"),
+        "nombre" : "Fideos",
+        "categoria" : "Harina",
+        "stock" : 20
+}
+{
+        "_id" : ObjectId("6059336aef21b807b5b5f50c"),
+        "nombre" : "Leche",
+        "categoria" : "Lácteos",
+        "stock" : 30
+}
+> db.items.save({nombre:'Crema', categoria: 'Lácteos', stock: 15});
+WriteResult({ "nInserted" : 1 })
+> db.items.find().pretty();
+{
+        "_id" : ObjectId("60593314ef21b807b5b5f50b"),
+        "nombre" : "Fideos",
+        "categoria" : "Harina",
+        "stock" : 20
+}
+{
+        "_id" : ObjectId("6059336aef21b807b5b5f50c"),
+        "nombre" : "Leche",
+        "categoria" : "Lácteos",
+        "stock" : 30
+}
+{
+        "_id" : ObjectId("60593379ef21b807b5b5f50d"),
+        "nombre" : "Crema",
+        "categoria" : "Lácteos",
+        "stock" : 15
+}
+> show dbs;
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+prueba  0.000GB
+> db.items.save({nombre:'Aceite', categoria: 'Aceites', stock: 50});
+WriteResult({ "nInserted" : 1 })
+> db.items.save({nombre:'Arvejas', categoria: 'Enlatados', stock: 50});
+WriteResult({ "nInserted" : 1 })
+> db.items.find().pretty();
+{
+        "_id" : ObjectId("60593314ef21b807b5b5f50b"),
+        "nombre" : "Fideos",
+        "categoria" : "Harina",
+        "stock" : 20
+}
+{
+        "_id" : ObjectId("6059336aef21b807b5b5f50c"),
+        "nombre" : "Leche",
+        "categoria" : "Lácteos",
+        "stock" : 30
+}
+{
+        "_id" : ObjectId("60593379ef21b807b5b5f50d"),
+        "nombre" : "Crema",
+        "categoria" : "Lácteos",
+        "stock" : 15
+}
+{
+        "_id" : ObjectId("60593542ef21b807b5b5f50e"),
+        "nombre" : "Aceite",
+        "categoria" : "Aceites",
+        "stock" : 50
+}
+{
+        "_id" : ObjectId("60593556ef21b807b5b5f50f"),
+        "nombre" : "Arvejas",
+        "categoria" : "Enlatados",
+        "stock" : 50
+}
+>
